@@ -119,11 +119,13 @@
       width: 80%;
       margin: auto;
       display: block;
+      top: 50%;
+      position: relative;
   }
 
-  img {
-      height: 100%;
-      width: 100%;
+  img, svg {
+      height: 100% !important;
+      width: 100% !important;
   }
 
   .registerCard {
@@ -138,6 +140,10 @@
     --bs-gutter-x: 0;
   }
 
+  .qr {
+    height: 100%;
+    width: 100%;
+  }
   
 
   

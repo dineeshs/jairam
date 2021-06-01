@@ -5,5 +5,13 @@ html, body { height: 100%;
  }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.qr {
+    height: 100%;
+    width: 100%;
+  }
 
+  img, svg {
+    height: 100% !important;
+    width: 100% !important;
+}
 

@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
   showSpinnerForRegistration: boolean;
   registrationSuccessful: boolean;
   registrationFailed: boolean;
+  value: string;
+  email: string;
+  accBalance: string;
   
   constructor(
     private formBuilder: FormBuilder, 
@@ -70,13 +73,23 @@ export class AppComponent implements OnInit {
         console.log(this.resp.registered);
         this.registerToken = this.resp.token;
         if(this.resp.registered === true) {
+          this.firstName = this.resp.userDetails.firstName;
+          this.lastName = this.resp.userDetails.lastName;
+          this.isStudent = this.resp.userDetails.isStudent;
+          this.phoneNumber = this.resp.userDetails.phoneNo;
+          this.accBalance  = this.resp.userDetails.accBalance;
+          this.email = this.resp.userDetails.email;
+          this.value = this.resp.userDetails.firstName + "," + this.resp.userDetails.lastName
+          + "," + this.resp.userDetails.isStudent + "," + this.resp.userDetails.phoneNo 
+          + "," + this.resp.userDetails.email;
+          console.log(this.value);
           
           setTimeout(()=>{ this.showSpinner = false; this.isRegistered = true; this.registrationFailed = false;
-            this.registrationSuccessful = false;  this.showMainPage = true;}, 4000)
+            this.registrationSuccessful = false;  this.showMainPage = true;}, 3000)
           
         }
         else {
-          setTimeout(()=>{ this.showSpinner = false; this.isRegistered = false; }, 4000)
+          setTimeout(()=>{ this.showSpinner = false; this.isRegistered = false; }, 3000)
         }
       } ,
       (error) => console.log(error)
@@ -114,10 +127,19 @@ export class AppComponent implements OnInit {
     this.http.post('http://localhost:4200/reg', body, { headers }).subscribe(response => {
         this.respreg = response;
         console.log(this.resp);
-        if(this.respreg.response === 'User has been successfully created') {
-          setTimeout(()=>{ this.showSpinnerForRegistration = false; this.isRegistered = true; this.registrationSuccessful = true; }, 4000)
+        if(this.respreg.registered === true) {
+          this.firstName = this.resp.userDetails.firstName;
+          this.lastName = this.resp.userDetails.lastName;
+          this.isStudent = this.resp.userDetails.isStudent;
+          this.phoneNumber = this.resp.userDetails.phoneNo;
+          this.accBalance  = this.resp.userDetails.accBalance;
+          this.email = this.resp.userDetails.email;
+          this.value = this.resp.userDetails.firstName + "," + this.resp.userDetails.lastName
+          + "," + this.resp.userDetails.isStudent + "," + this.resp.userDetails.phoneNo 
+          + "," + this.resp.userDetails.email;
+          setTimeout(()=>{ this.showSpinnerForRegistration = false; this.isRegistered = true; this.showMainPage = true; }, 3000)
         } else {
-          setTimeout(()=>{ this.showSpinnerForRegistration = false; this.registrationFailed = true; }, 4000)
+          setTimeout(()=>{ this.showSpinnerForRegistration = false; this.registrationFailed = true; }, 3000)
         }
     });
   }
