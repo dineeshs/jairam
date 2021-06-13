@@ -79,9 +79,7 @@ export class AppComponent implements OnInit {
           this.phoneNumber = this.resp.userDetails.phoneNo;
           this.accBalance  = this.resp.userDetails.accBalance;
           this.email = this.resp.userDetails.email;
-          this.value = this.resp.userDetails.firstName + "," + this.resp.userDetails.lastName
-          + "," + this.resp.userDetails.isStudent + "," + this.resp.userDetails.phoneNo 
-          + "," + this.resp.userDetails.email;
+          this.value = JSON.stringify(this.resp);
           console.log(this.value);
           
           setTimeout(()=>{ this.showSpinner = false; this.isRegistered = true; this.registrationFailed = false;
@@ -134,9 +132,7 @@ export class AppComponent implements OnInit {
           this.phoneNumber = this.resp.userDetails.phoneNo;
           this.accBalance  = this.resp.userDetails.accBalance;
           this.email = this.resp.userDetails.email;
-          this.value = this.resp.userDetails.firstName + "," + this.resp.userDetails.lastName
-          + "," + this.resp.userDetails.isStudent + "," + this.resp.userDetails.phoneNo 
-          + "," + this.resp.userDetails.email;
+          this.value = JSON.stringify(this.resp);
           setTimeout(()=>{ this.showSpinnerForRegistration = false; this.isRegistered = true; this.showMainPage = true; }, 3000)
         } else {
           setTimeout(()=>{ this.showSpinnerForRegistration = false; this.registrationFailed = true; }, 3000)
