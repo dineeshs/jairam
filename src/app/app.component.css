@@ -130,6 +130,7 @@
 
   .registerCard {
       top: 10%;
+      text-align: left;
   }
 
   .registerCardSuccess {

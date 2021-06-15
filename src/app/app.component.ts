@@ -124,15 +124,15 @@ export class AppComponent implements OnInit {
     const body = { firstName: data.firstName, lastName: data.lastName, isStudent: this.isStudent, phoneNo: data.phoneNumber };
     this.http.post('http://localhost:4200/reg', body, { headers }).subscribe(response => {
         this.respreg = response;
-        console.log(this.resp);
+        console.log(this.respreg);
         if(this.respreg.registered === true) {
-          this.firstName = this.resp.userDetails.firstName;
-          this.lastName = this.resp.userDetails.lastName;
-          this.isStudent = this.resp.userDetails.isStudent;
-          this.phoneNumber = this.resp.userDetails.phoneNo;
-          this.accBalance  = this.resp.userDetails.accBalance;
-          this.email = this.resp.userDetails.email;
-          this.value = JSON.stringify(this.resp);
+          this.firstName = this.respreg.userDetails.firstName;
+          this.lastName = this.respreg.userDetails.lastName;
+          this.isStudent = this.respreg.userDetails.isStudent;
+          this.phoneNumber = this.respreg.userDetails.phoneNo;
+          this.accBalance  = this.respreg.userDetails.accBalance;
+          this.email = this.respreg.userDetails.email;
+          this.value = JSON.stringify(this.respreg);
           setTimeout(()=>{ this.showSpinnerForRegistration = false; this.isRegistered = true; this.showMainPage = true; }, 3000)
         } else {
           setTimeout(()=>{ this.showSpinnerForRegistration = false; this.registrationFailed = true; }, 3000)
